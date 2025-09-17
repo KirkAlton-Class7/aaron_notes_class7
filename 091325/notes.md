@@ -49,3 +49,14 @@ lab:
     - older AWS account with edited default VPC
 9) change instance state, show resources that are still allocated
 10) teardown 
+
+
+
+
+
+tags:
+
+key: value 
+
+team: dev
+env: test
