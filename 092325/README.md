@@ -1,4 +1,5 @@
-# Complete Guide to CLI, Source Code Management, and Development Setup
+# Notes for Class 7, Week 3
+## CLI, Source Code Management, and IDE
 
 ## Table of Contents
 1. [Introduction](#introduction)
