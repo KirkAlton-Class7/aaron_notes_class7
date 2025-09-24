@@ -105,56 +105,6 @@ Visual Studio Code (VS Code) is an Integrated Development Environment (IDE) that
 
 File paths tell the computer exactly where files and folders are located in the storage system. Think of them as addresses for your files.
 
-### Absolute vs Relative Paths
-
-#### **Absolute File Paths:**
-These reference files from the root of the storage drive, including every folder in the path. Like giving complete directions from a landmark (root drive) everyone knows.
-
-**macOS/Linux/Unix Examples:**
-```bash
-/Users/john/Documents/resume.pdf
-/Applications/Visual Studio Code.app
-/System/Library/Fonts/Helvetica.ttc
-/etc/hosts
-/var/log/system.log
-```
-
- **Windows (Git Bash) Examples:**
-```bash
-/c/Users/John/Documents/resume.pdf
-/c/Program Files/Git/bin/git.exe
-/d/Projects/website/index.html
-```
-
-#### **Relative File Paths:**
-These reference files from your current location (present working directory). Like giving directions from where someone currently is.
-
-```bash
-./Documents/resume.pdf          # File in Documents folder from current location
-../Desktop/photo.jpg            # File in Desktop folder, one level up
-scripts/backup.sh               # File in scripts subfolder
-../../shared/config.txt         # File two levels up, then in shared folder
-```
-
-### Path Shortcuts
-
-#### Home Directory Shortcuts:
-
-**Tilde (`~`) - Universal Home Directory:**
-- **macOS:** Expands to `/Users/<YOUR-USERNAME>/`
-- **Windows (Git Bash):** Expands to `/c/Users/<YOUR-USERNAME>/`
-
-**Examples:**
-```bash
-~/Documents/file.txt            # Your Documents folder
-~/.ssh/id_ed25519              # SSH key in your home directory
-~/Desktop/project/             # Project folder on your desktop
-```
-
-**Current Directory:** `.` or `./`
-
-**Parent Directory:** `..` or `../`
-
 ### Setting Up GUI File Views
 
 #### macOS File Path and Extension Setup
@@ -196,6 +146,52 @@ killall Finder
 3. Click **Options** → **Change folder and search options**
 4. Click **View** tab
 5. Check **Display the full path in the title bar**
+
+### Absolute vs Relative Paths
+
+#### **Absolute File Paths:**
+These reference files from the root of the storage drive, including every folder in the path. Like giving complete directions from a landmark (root drive) everyone knows.
+
+**macOS/Linux/Unix Examples:**
+```bash
+/Users/john/Documents/resume.pdf
+/Applications/Visual Studio Code.app
+/System/Library/Fonts/Helvetica.ttc
+/etc/hosts
+/var/log/system.log
+```
+
+ **Windows (Git Bash) Examples:**
+```bash
+/c/Users/John/Documents/resume.pdf
+/c/Program Files/Git/bin/git.exe
+/d/Projects/website/index.html
+```
+
+#### **Relative File Paths:**
+These reference files from your current location (present working directory). Like giving directions from where someone currently is.
+
+```bash
+./Documents/resume.pdf          # File in Documents folder from current location
+../Desktop/photo.jpg            # File in Desktop folder, one level up
+scripts/backup.sh               # File in scripts subfolder
+../../shared/config.txt         # File two levels up, then in shared folder
+```
+
+### Path Shortcuts
+
+**Home Directory:**
+    - Use the tilde (`~`)
+    - **macOS:** Expands to `/Users/<YOUR-USERNAME>/`
+    - **Windows (Git Bash):** Expands to `/c/Users/<YOUR-USERNAME>/`
+
+**Current Directory:** 
+    - Use `.` or `./`
+    - Is expanded to whatever the path is that `pwd` returns.
+
+**Parent Directory:** 
+    - Use `..` or `../`
+    - Is expanded to be the directory "above" the directory you are in.
 
 ---
 
@@ -241,11 +237,18 @@ Display file contents.
 3. **Use ctrl-c** to kill a command currently executing
 
 4. **Stop using spaces, stop using caps**
+    - File names or paths with spaces will need special attention.
+        - Use character breaks (normally is `\`) for spaces
+        - Alternatively, you can "delimit" the entire file name or path by wrapping it in a pair of quotes. 
+
+5) Usings "windows style" file paths in Git Bash will cause issues as the path is parsed as having character breaks. 
+    - Option A: Rewrite it with forward slashes. 
+    - Option B: Wrap the file path in double quotes. 
 
 ### Practice File Folder Script
 
 ```bash
-add later 
+curl https://raw.githubusercontent.com/aaron-dm-mcdonald/Class7-notes/refs/heads/main/092725/practice.sh | $SHELL
 ```
 
 ---

@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Set to exit on any error
+# End script if any commands get a non-zero exit code
 set -e
 
+# Force create TheoWAF directory or use existing directory
 cd ~
 if [ -d "Documents/TheoWAF" ]; then
     echo "TheoWAF directory exists, using it"
@@ -17,7 +18,7 @@ echo "Create practice directories"
 mkdir -p files/{projects,personal,work} \
          my-first-repo
 
-# Create test directories with various naming patterns
+# Create test directories with various names
 mkdir test1 test2 test3 \
       "test-$RANDOM" "test-$RANDOM" \
       "test-$(date +%m-%d-%Y)"
@@ -46,7 +47,7 @@ cat > ./my-first-repo/README.md << 'EOF'
 
 EOF
 
-# Download S3 bucket contents
+# Download bucket contents to get pics
 aws s3 sync s3://test-1256099743 ./photos --no-sign-request --quiet \
     && echo "Successfully downloaded photos with AWS S3 sync tool"
 
