@@ -42,12 +42,12 @@ Today there are several prereqs for class. There is a script that will automatic
 
 Run this command: 
 ```bash
-
+curl https://raw.githubusercontent.com/aaron-dm-mcdonald/Class7-notes/refs/heads/main/101825/check.sh | bash
 ```
 
 If you get a revocation error run this:
 ```bash
-
+curl --ssl-no-revoke https://raw.githubusercontent.com/aaron-dm-mcdonald/Class7-notes/refs/heads/main/101825/check.sh | bash
 ```
 
 <add note> This revocation error means Git Bash is not whitelisted by an antivirus or firewall or you're on a corporate network. This isn't a long term fix. 
