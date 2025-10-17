@@ -1,5 +1,24 @@
 # Terraform Introduction: 18 Oct 2025
 
+## Table of Contents
+
+- [Overview](#overview)
+  - [Goals for class](#goals-for-class)
+  - [Play by play](#play-by-play)
+- [Prereqs](#prereqs)
+  - [What the script does](#what-the-script-does)
+- [Why is this tool needed?](#why-is-this-tool-needed)
+  - [Console (ClickOps)](#console-clickops)
+  - [API](#api)
+  - [AWS CLI](#aws-cli)
+  - [The Terraform Solution](#the-terraform-solution)
+- [Understanding Terraform](#understanding-terraform)
+  - [What is Terraform?](#what-is-terraform)
+  - [Authentication](#authentication)
+  - [Key terms](#key-terms)
+- [Terraform Workflow](#terraform-workflow)
+- [Learning Resources](#learning-resources)
+
 ## Overview
 
 ### Goals for class
@@ -45,7 +64,7 @@ If you get a revocation error, run this instead:
 curl --ssl-no-revoke https://raw.githubusercontent.com/aaron-dm-mcdonald/Class7-notes/refs/heads/main/101825/check.sh | bash
 ```
 
-> **Note:** This revocation error means Git Bash is not whitelisted by an antivirus or firewall, or you're on a corporate network. This isn't a long term fix - you should work with your group to properly whitelist Git Bash.
+> **Note:** This revocation error means Git Bash is not whitelisted by an antivirus or firewall, or you're on a corporate network. This isn't a long term fix - you should work with your IT department to properly whitelist Git Bash.
 
 ### What the script does
 
@@ -64,7 +83,7 @@ It will create the TheoWAF folder structure if needed and will download a .gitig
 
 **Cons of ClickOps:**
 - Difficult to reproduce across environments (dev, staging, prod)
-- Not self-documenting: no record of what you clicked or why
+- Not self-documenting - no record of what you clicked or why
 - Impossible to automate or version control
 
 ### API
@@ -85,10 +104,10 @@ https://ec2.amazonaws.com/?Action=CreateVpc
 - Extremely verbose and error prone
 - Requires manual authentication handling
 - Not designed for human interaction
-- No state tracking- you have to manually track what you've created
+- No state tracking - you have to manually track what you've created
 - Hard to make small edits
 
-Reference: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpc.html
+**Reference:** [AWS EC2 CreateVpc API Documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpc.html)
 
 ### AWS CLI
 The AWS CLI wraps the AWS API in a more user-friendly command-line interface.
@@ -101,8 +120,8 @@ aws ec2 create-vpc --cidr-block "10.0.0.0/16" --instance-tenancy "default" --tag
 - Many flags needed for the many parameters
 - Different commands needed for create, update, and delete operations
 - Easy to make mistakes
-- No state tracking: CLI doesn't remember what resources it created
-- No idempotency: running the same command twice creates duplicate resources
+- No state tracking - CLI doesn't remember what resources it created
+- No idempotency - running the same command twice creates duplicate resources
 
 ### The Terraform Solution
 
@@ -120,7 +139,7 @@ Terraform solves these problems by:
 
 Terraform is an infrastructure as code (IaC) tool that lets you define, provision, query and manage cloud resources using a declarative configuration language. Instead of clicking through the AWS console or writing complex API calls, you write code that describes your desired infrastructure, and Terraform handles all the API calls and sequencing needed to make it happen.
 
-Official documentation: https://developer.hashicorp.com/terraform/docs
+**Official documentation:** [Terraform Docs](https://developer.hashicorp.com/terraform/docs)
 
 ### Authentication
 
@@ -132,7 +151,7 @@ Terraform uses the same authentication mechanisms as the AWS CLI. Common methods
 
 You don't specify credentials directly in Terraform code. Terraform automatically uses whatever credentials are available in your environment.
 
-Authentication documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication-and-configuration
+**Authentication documentation:** [AWS Provider Authentication](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication-and-configuration)
 
 ### Key terms:
 
@@ -146,7 +165,7 @@ Authentication documentation: https://registry.terraform.io/providers/hashicorp/
 
 - **HCL (HashiCorp Configuration Language):** Terraform's declarative configuration language. More human-readable than JSON. While primarily declarative (you describe what you want), it includes some procedural features like loops and conditionals.
 
-- **Idempotency:** A critical property of Terraform. Running `terraform apply` multiple times with the same configuration produces the same result. Terraform won't recreate or modify resources unless your code changes or state drift is detected.
+- **Idempotency:** A critical property of Terraform - running `terraform apply` multiple times with the same configuration produces the same result. Terraform won't recreate or modify resources unless your code changes or state drift is detected.
 
 - **Resource:** A block of HCL code that defines infrastructure to create in the cloud, like a VPC or EC2 instance. Each resource has a type and configuration parameters.
 
@@ -157,16 +176,16 @@ Authentication documentation: https://registry.terraform.io/providers/hashicorp/
 ## Terraform Workflow 
 
 ```bash
-# Initialize working directory- downloads provider plugins and generates lock file
+# Initialize working directory - downloads provider plugins
 terraform init
 
 # Validate HCL syntax and configuration
 terraform validate
 
-# Show execution plan- preview what will change or save it for review
+# Show execution plan - preview what will change
 terraform plan
 
-# Apply changes- actually create/modify/destroy infrastructure
+# Apply changes - actually create/modify/destroy infrastructure
 terraform apply
 
 # Destroy all resources managed by this configuration
@@ -181,11 +200,11 @@ terraform destroy
 5. Run `terraform apply` to make the changes
 6. Terraform updates the state file automatically
 
-CLI documentation: https://developer.hashicorp.com/terraform/cli/commands
+**CLI documentation:** [Terraform CLI Commands](https://developer.hashicorp.com/terraform/cli/commands)
 
 ## Learning Resources
 
 Official Terraform documentation:
-- Getting Started: https://developer.hashicorp.com/terraform/tutorials/aws-get-started
-- Language Reference: https://developer.hashicorp.com/terraform/language
-- AWS Provider: https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+- [Getting Started with Terraform and AWS](https://developer.hashicorp.com/terraform/tutorials/aws-get-started)
+- [Terraform Language Reference](https://developer.hashicorp.com/terraform/language)
+- [AWS Provider Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
