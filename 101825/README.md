@@ -38,10 +38,13 @@
 4) Open Git Bash or Terminal
     - Navigate to TheoWAF directory
     - Navigate to Terraform directory 
-    - Create project folder 
-    - Navigate to project folder
 
-5) Clone Theo's repo
+5) Clone Theo's repo 
+
+6) Setup today's project folder
+    - Create project folder 
+    - Copy .gitignore to project folder
+    - Navigate to project folder
 
 6) Create `auth.tf` and `main.tf` files
 
