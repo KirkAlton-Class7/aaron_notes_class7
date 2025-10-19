@@ -116,7 +116,7 @@ https://ec2.amazonaws.com/?Action=CreateVpc
 The AWS CLI wraps the AWS API in a more user-friendly command-line interface.
 
 ```bash
-aws ec2 create-vpc --cidr-block "10.0.0.0/16" --instance-tenancy "default" --tag-specifications '{"resourceType":"vpc","tags":[{"key":"Name","value":"demo-vpc"}]}' 
+aws ec2 create-vpc --cidr-block "10.0.0.0/16" --instance-tenancy "default" --tag-specifications 'ResourceType=vpc,Tags=[{Key=Name,Value=demo-vpc}]'
 ```
 
 **Cons of AWS CLI:**
