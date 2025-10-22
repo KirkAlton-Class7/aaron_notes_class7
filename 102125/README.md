@@ -1,0 +1,1 @@
+Notes for class 7: 10 Oct 2025
