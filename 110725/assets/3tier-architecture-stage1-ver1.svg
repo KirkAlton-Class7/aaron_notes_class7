@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <defs>
+    <style>
+      .title { font: bold 24px sans-serif; fill: #232F3E; }
+      .subtitle { font: bold 16px sans-serif; fill: #232F3E; }
+      .label { font: 14px sans-serif; fill: #232F3E; }
+      .small-label { font: 12px sans-serif; fill: #545B64; }
+      .vpc-border { fill: none; stroke: #7AA116; stroke-width: 3; stroke-dasharray: 10,5; }
+      .subnet-public { fill: #E8F5E9; stroke: #4CAF50; stroke-width: 2; }
+      .subnet-private { fill: #FFF3E0; stroke: #FF9800; stroke-width: 2; }
+      .ec2-box { fill: #FFFFFF; stroke: #FF9900; stroke-width: 2; rx: 5; }
+      .sg-box { fill: #F0F8FF; stroke: #2196F3; stroke-width: 2; rx: 3; }
+      .igw { fill: #4CAF50; stroke: #2E7D32; stroke-width: 2; }
+      .arrow { stroke: #232F3E; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .arrow-http { stroke: #2196F3; stroke-width: 2; fill: none; marker-end: url(#arrowhead-blue); }
+      .arrow-mysql { stroke: #FF5722; stroke-width: 2; fill: none; marker-end: url(#arrowhead-red); }
+      .cloud { fill: #E3F2FD; stroke: #2196F3; stroke-width: 2; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#232F3E" />
+    </marker>
+    <marker id="arrowhead-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#2196F3" />
+    </marker>
+    <marker id="arrowhead-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#FF5722" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" class="title">AWS 3-Tier Architecture</text>
+
+  <!-- Internet Cloud -->
+  <ellipse cx="600" cy="80" rx="100" ry="30" class="cloud"/>
+  <text x="600" y="85" text-anchor="middle" class="label">Internet</text>
+
+  <!-- Internet Gateway -->
+  <rect x="550" y="130" width="100" height="40" class="igw"/>
+  <text x="600" y="155" text-anchor="middle" class="label" fill="white">IGW</text>
+  
+  <!-- Arrow from Internet to IGW -->
+  <line x1="600" y1="110" x2="600" y2="130" class="arrow"/>
+
+  <!-- VPC Container -->
+  <rect x="50" y="200" width="1100" height="650" class="vpc-border"/>
+  <text x="70" y="225" class="subtitle">VPC (10.0.0.0/16)</text>
+
+  <!-- Public Subnet A (Web Tier) -->
+  <rect x="100" y="250" width="300" height="300" class="subnet-public"/>
+  <text x="250" y="275" text-anchor="middle" class="subtitle">Public Subnet A</text>
+  <text x="250" y="295" text-anchor="middle" class="small-label">us-east-1a | 10.0.1.0/24</text>
+
+  <!-- Web Server EC2 -->
+  <rect x="150" y="320" width="200" height="180" class="ec2-box"/>
+  <text x="250" y="345" text-anchor="middle" class="subtitle">Web Server</text>
+  <text x="250" y="365" text-anchor="middle" class="small-label">EC2 t2.micro</text>
+  <text x="250" y="385" text-anchor="middle" class="small-label">Nginx</text>
+  <text x="250" y="410" text-anchor="middle" class="small-label">Public IP: ✓</text>
+  <text x="250" y="430" text-anchor="middle" class="small-label">HTML/CSS/JS</text>
+  
+  <!-- Web SG -->
+  <rect x="160" y="450" width="180" height="40" class="sg-box"/>
+  <text x="250" y="465" text-anchor="middle" class="small-label">Web SG</text>
+  <text x="250" y="480" text-anchor="middle" class="small-label">Port 80 ← 0.0.0.0/0</text>
+
+  <!-- Public Subnet B (API Tier) -->
+  <rect x="450" y="250" width="300" height="300" class="subnet-public"/>
+  <text x="600" y="275" text-anchor="middle" class="subtitle">Public Subnet B</text>
+  <text x="600" y="295" text-anchor="middle" class="small-label">us-east-1b | 10.0.2.0/24</text>
+
+  <!-- NAT Gateway -->
+  <rect x="470" y="310" width="100" height="40" class="igw"/>
+  <text x="520" y="335" text-anchor="middle" class="label" fill="white">NAT GW</text>
+
+  <!-- API Server EC2 -->
+  <rect x="500" y="370" width="200" height="150" class="ec2-box"/>
+  <text x="600" y="395" text-anchor="middle" class="subtitle">API Server</text>
+  <text x="600" y="415" text-anchor="middle" class="small-label">EC2 t2.micro</text>
+  <text x="600" y="435" text-anchor="middle" class="small-label">Flask (Python)</text>
+  <text x="600" y="460" text-anchor="middle" class="small-label">Public IP: ✓</text>
+  <text x="600" y="480" text-anchor="middle" class="small-label">app.py</text>
+  
+  <!-- API SG -->
+  <rect x="510" y="490" width="180" height="40" class="sg-box"/>
+  <text x="600" y="505" text-anchor="middle" class="small-label">API SG</text>
+  <text x="600" y="520" text-anchor="middle" class="small-label">Port 5000 ← Web SG</text>
+
+  <!-- Private Subnet C (DB Tier) -->
+  <rect x="800" y="250" width="300" height="300" class="subnet-private"/>
+  <text x="950" y="275" text-anchor="middle" class="subtitle">Private Subnet C</text>
+  <text x="950" y="295" text-anchor="middle" class="small-label">us-east-1c | 10.0.3.0/24</text>
+
+  <!-- DB Server EC2 -->
+  <rect x="850" y="320" width="200" height="180" class="ec2-box"/>
+  <text x="950" y="345" text-anchor="middle" class="subtitle">DB Server</text>
+  <text x="950" y="365" text-anchor="middle" class="small-label">EC2 t2.micro</text>
+  <text x="950" y="385" text-anchor="middle" class="small-label">MariaDB</text>
+  <text x="950" y="410" text-anchor="middle" class="small-label">Private IP only</text>
+  <text x="950" y="430" text-anchor="middle" class="small-label">init.sql</text>
+  
+  <!-- DB SG -->
+  <rect x="860" y="450" width="180" height="40" class="sg-box"/>
+  <text x="950" y="465" text-anchor="middle" class="small-label">DB SG</text>
+  <text x="950" y="480" text-anchor="middle" class="small-label">Port 3306 ← API SG</text>
+
+  <!-- Arrows showing traffic flow -->
+  <!-- IGW to Web Server -->
+  <line x1="600" y1="170" x2="250" y2="250" class="arrow"/>
+  
+  <!-- Web to API (HTTP) -->
+  <path d="M 350 410 L 500 410" class="arrow-http"/>
+  <text x="425" y="400" text-anchor="middle" class="small-label" fill="#2196F3">HTTP</text>
+  <text x="425" y="415" text-anchor="middle" class="small-label" fill="#2196F3">Port 5000</text>
+  
+  <!-- API to DB (MySQL) -->
+  <path d="M 700 410 L 850 410" class="arrow-mysql"/>
+  <text x="775" y="400" text-anchor="middle" class="small-label" fill="#FF5722">MySQL</text>
+  <text x="775" y="415" text-anchor="middle" class="small-label" fill="#FF5722">Port 3306</text>
+
+  <!-- Traffic Flow Legend -->
+  <text x="100" y="600" class="subtitle">Traffic Flow:</text>
+  <text x="100" y="625" class="small-label">1. User → Web Server (Port 80)</text>
+  <text x="100" y="645" class="small-label">2. Web JS → API Server (Port 5000)</text>
+  <text x="100" y="665" class="small-label">3. API → DB Server (Port 3306)</text>
+
+  <!-- Security Groups Detail -->
+  <text x="500" y="600" class="subtitle">Security Groups:</text>
+  
+  <!-- Web SG Details -->
+  <rect x="500" y="610" width="180" height="70" class="sg-box"/>
+  <text x="590" y="630" text-anchor="middle" class="small-label">Web Server SG</text>
+  <text x="590" y="645" text-anchor="middle" class="small-label">In: 80 ← 0.0.0.0/0</text>
+  <text x="590" y="660" text-anchor="middle" class="small-label">Out: All traffic</text>
+  
+  <!-- API SG Details -->
+  <rect x="700" y="610" width="180" height="70" class="sg-box"/>
+  <text x="790" y="630" text-anchor="middle" class="small-label">API Server SG</text>
+  <text x="790" y="645" text-anchor="middle" class="small-label">In: 5000 ← Web SG</text>
+  <text x="790" y="660" text-anchor="middle" class="small-label">Out: All traffic</text>
+  
+  <!-- DB SG Details -->
+  <rect x="900" y="610" width="180" height="70" class="sg-box"/>
+  <text x="990" y="630" text-anchor="middle" class="small-label">DB Server SG</text>
+  <text x="990" y="645" text-anchor="middle" class="small-label">In: 3306 ← API SG</text>
+  <text x="990" y="660" text-anchor="middle" class="small-label">Out: All traffic</text>
+
+  <!-- Components Info -->
+  <text x="100" y="730" class="subtitle">Application Stack:</text>
+  <text x="100" y="755" class="small-label">• Web: Nginx + HTML/CSS/JS (Login, Gallery UI)</text>
+  <text x="100" y="775" class="small-label">• API: Flask + Python (Authentication, Data endpoints)</text>
+  <text x="100" y="795" class="small-label">• DB: MariaDB (Users, Pictures tables)</text>
+  
+  <!-- Notes -->
+  <text x="100" y="830" class="small-label" fill="#FF5722">Note: No Load Balancers - Single EC2 instances per tier</text>
+</svg>

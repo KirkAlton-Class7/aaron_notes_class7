@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1050">
+  <defs>
+    <style>
+      .title { font: bold 24px sans-serif; fill: #232F3E; }
+      .subtitle { font: bold 16px sans-serif; fill: #232F3E; }
+      .label { font: 14px sans-serif; fill: #232F3E; }
+      .small-label { font: 12px sans-serif; fill: #545B64; }
+      .vpc-border { fill: none; stroke: #7AA116; stroke-width: 3; stroke-dasharray: 10,5; }
+      .region-border { fill: none; stroke: #FF9900; stroke-width: 3; stroke-dasharray: 8,4; }
+      .aws-border { fill: none; stroke: #232F3E; stroke-width: 4; }
+      .subnet-public { fill: #E8F5E9; stroke: #4CAF50; stroke-width: 2; }
+      .subnet-private { fill: #FFF3E0; stroke: #FF9800; stroke-width: 2; }
+      .ec2-box { fill: #FFFFFF; stroke: #FF9900; stroke-width: 2; rx: 5; }
+      .sg-box { fill: #F0F8FF; stroke: #2196F3; stroke-width: 2; rx: 3; }
+      .igw { fill: #4CAF50; stroke: #2E7D32; stroke-width: 2; }
+      .arrow { stroke: #232F3E; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .arrow-http { stroke: #2196F3; stroke-width: 2; fill: none; marker-end: url(#arrowhead-blue); }
+      .arrow-mysql { stroke: #FF5722; stroke-width: 2; fill: none; marker-end: url(#arrowhead-red); }
+      .cloud { fill: #E3F2FD; stroke: #2196F3; stroke-width: 2; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#232F3E" />
+    </marker>
+    <marker id="arrowhead-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#2196F3" />
+    </marker>
+    <marker id="arrowhead-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#FF5722" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" class="title">AWS 3-Tier Architecture</text>
+
+  <!-- Internet Cloud -->
+  <ellipse cx="600" cy="80" rx="100" ry="30" class="cloud"/>
+  <text x="600" y="85" text-anchor="middle" class="label">Internet</text>
+
+  <!-- Internet Gateway -->
+  <rect x="550" y="130" width="100" height="40" class="igw"/>
+  <text x="600" y="155" text-anchor="middle" class="label" fill="white">IGW</text>
+  
+  <!-- Arrow from Internet to IGW -->
+  <line x1="600" y1="110" x2="600" y2="130" class="arrow"/>
+
+  <!-- AWS Cloud Container -->
+  <rect x="20" y="180" width="1160" height="840" class="aws-border" rx="10"/>
+  <text x="40" y="205" class="title" fill="#232F3E">AWS Cloud</text>
+
+  <!-- Region Container -->
+  <rect x="40" y="220" width="1120" height="780" class="region-border" rx="8"/>
+  <text x="60" y="245" class="subtitle" fill="#FF9900">Region: us-east-1</text>
+
+  <!-- VPC Container (expanded to include app stack) -->
+  <rect x="60" y="260" width="1080" height="720" class="vpc-border"/>
+  <text x="80" y="285" class="subtitle">VPC (10.0.0.0/16)</text>
+
+  <!-- Public Subnet A (Web Tier) -->
+  <rect x="110" y="310" width="300" height="300" class="subnet-public"/>
+  <text x="260" y="335" text-anchor="middle" class="subtitle">Public Subnet A</text>
+  <text x="260" y="355" text-anchor="middle" class="small-label">us-east-1a | 10.0.1.0/24</text>
+
+  <!-- Web Server EC2 -->
+  <rect x="160" y="380" width="200" height="180" class="ec2-box"/>
+  <text x="260" y="405" text-anchor="middle" class="subtitle">Web Server</text>
+  <text x="260" y="425" text-anchor="middle" class="small-label">EC2 t2.micro</text>
+  <text x="260" y="445" text-anchor="middle" class="small-label">Nginx</text>
+  <text x="260" y="470" text-anchor="middle" class="small-label">Public IP: ✓</text>
+  <text x="260" y="490" text-anchor="middle" class="small-label">HTML/CSS/JS</text>
+  
+  <!-- Web SG -->
+  <rect x="170" y="510" width="180" height="40" class="sg-box"/>
+  <text x="260" y="525" text-anchor="middle" class="small-label">Web SG</text>
+  <text x="260" y="540" text-anchor="middle" class="small-label">Port 80 ← 0.0.0.0/0</text>
+
+  <!-- Public Subnet B (API Tier) -->
+  <rect x="460" y="310" width="300" height="300" class="subnet-public"/>
+  <text x="610" y="335" text-anchor="middle" class="subtitle">Public Subnet B</text>
+  <text x="610" y="355" text-anchor="middle" class="small-label">us-east-1b | 10.0.2.0/24</text>
+
+  <!-- NAT Gateway -->
+  <rect x="480" y="370" width="100" height="40" class="igw"/>
+  <text x="530" y="395" text-anchor="middle" class="label" fill="white">NAT GW</text>
+
+  <!-- API Server EC2 -->
+  <rect x="510" y="430" width="200" height="150" class="ec2-box"/>
+  <text x="610" y="455" text-anchor="middle" class="subtitle">API Server</text>
+  <text x="610" y="475" text-anchor="middle" class="small-label">EC2 t2.micro</text>
+  <text x="610" y="495" text-anchor="middle" class="small-label">Flask (Python)</text>
+  <text x="610" y="520" text-anchor="middle" class="small-label">Public IP: ✓</text>
+  <text x="610" y="540" text-anchor="middle" class="small-label">app.py</text>
+  
+  <!-- API SG -->
+  <rect x="520" y="550" width="180" height="40" class="sg-box"/>
+  <text x="610" y="565" text-anchor="middle" class="small-label">API SG</text>
+  <text x="610" y="580" text-anchor="middle" class="small-label">Port 5000 ← Web SG</text>
+
+  <!-- Private Subnet C (DB Tier) -->
+  <rect x="810" y="310" width="300" height="300" class="subnet-private"/>
+  <text x="960" y="335" text-anchor="middle" class="subtitle">Private Subnet C</text>
+  <text x="960" y="355" text-anchor="middle" class="small-label">us-east-1c | 10.0.3.0/24</text>
+
+  <!-- DB Server EC2 -->
+  <rect x="860" y="380" width="200" height="180" class="ec2-box"/>
+  <text x="960" y="405" text-anchor="middle" class="subtitle">DB Server</text>
+  <text x="960" y="425" text-anchor="middle" class="small-label">EC2 t2.micro</text>
+  <text x="960" y="445" text-anchor="middle" class="small-label">MariaDB</text>
+  <text x="960" y="470" text-anchor="middle" class="small-label">Private IP only</text>
+  <text x="960" y="490" text-anchor="middle" class="small-label">init.sql</text>
+  
+  <!-- DB SG -->
+  <rect x="870" y="510" width="180" height="40" class="sg-box"/>
+  <text x="960" y="525" text-anchor="middle" class="small-label">DB SG</text>
+  <text x="960" y="540" text-anchor="middle" class="small-label">Port 3306 ← API SG</text>
+
+  <!-- Arrows showing traffic flow -->
+  <!-- IGW to Web Server -->
+  <line x1="600" y1="170" x2="260" y2="310" class="arrow"/>
+  
+  <!-- IGW to NAT Gateway -->
+  <line x1="600" y1="170" x2="530" y2="370" class="arrow"/>
+  
+  <!-- NAT Gateway to Private Subnet (for DB updates) -->
+  <path d="M 860 420 Q 760 390 580 390" class="arrow" stroke-dasharray="5,5"/>
+  <text x="720" y="380" text-anchor="middle" class="small-label" fill="#4CAF50">Outbound</text>
+  
+  <!-- Web to API (HTTP) -->
+  <path d="M 360 470 L 510 500" class="arrow-http"/>
+  <text x="435" y="460" text-anchor="middle" class="small-label" fill="#2196F3">HTTP</text>
+  <text x="435" y="475" text-anchor="middle" class="small-label" fill="#2196F3">Port 5000</text>
+  
+  <!-- API to DB (MySQL) -->
+  <path d="M 710 500 L 860 470" class="arrow-mysql"/>
+  <text x="785" y="460" text-anchor="middle" class="small-label" fill="#FF5722">MySQL</text>
+  <text x="785" y="475" text-anchor="middle" class="small-label" fill="#FF5722">Port 3306</text>
+
+  <!-- Traffic Flow Legend (inside VPC) -->
+  <text x="110" y="645" class="subtitle">Traffic Flow:</text>
+  <text x="110" y="670" class="small-label">1. User → Web Server (Port 80)</text>
+  <text x="110" y="690" class="small-label">2. Web JS → API Server (Port 5000)</text>
+  <text x="110" y="710" class="small-label">3. API → DB Server (Port 3306)</text>
+  <text x="110" y="730" class="small-label">4. Private Subnet → NAT GW → Internet (updates)</text>
+
+  <!-- Security Groups Detail (inside VPC) -->
+  <text x="510" y="645" class="subtitle">Security Groups:</text>
+  
+  <!-- Web SG Details -->
+  <rect x="510" y="655" width="180" height="70" class="sg-box"/>
+  <text x="600" y="675" text-anchor="middle" class="small-label">Web Server SG</text>
+  <text x="600" y="690" text-anchor="middle" class="small-label">In: 80 ← 0.0.0.0/0</text>
+  <text x="600" y="705" text-anchor="middle" class="small-label">Out: All traffic</text>
+  
+  <!-- API SG Details -->
+  <rect x="710" y="655" width="180" height="70" class="sg-box"/>
+  <text x="800" y="675" text-anchor="middle" class="small-label">API Server SG</text>
+  <text x="800" y="690" text-anchor="middle" class="small-label">In: 5000 ← Web SG</text>
+  <text x="800" y="705" text-anchor="middle" class="small-label">Out: All traffic</text>
+  
+  <!-- DB SG Details -->
+  <rect x="910" y="655" width="180" height="70" class="sg-box"/>
+  <text x="1000" y="675" text-anchor="middle" class="small-label">DB Server SG</text>
+  <text x="1000" y="690" text-anchor="middle" class="small-label">In: 3306 ← API SG</text>
+  <text x="1000" y="705" text-anchor="middle" class="small-label">Out: All traffic</text>
+
+  <!-- Application Stack (inside VPC) -->
+  <text x="110" y="780" class="subtitle">Application Stack:</text>
+  <text x="110" y="805" class="small-label">• Web: Nginx + HTML/CSS/JS (Login, Gallery UI)</text>
+  <text x="110" y="825" class="small-label">• API: Flask + Python (Authentication, Data endpoints)</text>
+  <text x="110" y="845" class="small-label">• DB: MariaDB (Users, Pictures tables)</text>
+  
+  <!-- Notes (inside VPC) -->
+  <text x="110" y="885" class="small-label" fill="#FF5722">Note: No Load Balancers - Single EC2 instances per tier</text>
+  <text x="110" y="905" class="small-label" fill="#4CAF50">NAT Gateway enables private subnet instances to access internet for updates</text>
+  <text x="110" y="925" class="small-label" fill="#FF9900">GitHub: aaron-dm-mcdonald/Class7-notes/110725</text>
+</svg>
