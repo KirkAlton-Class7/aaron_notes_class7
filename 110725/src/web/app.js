@@ -1,5 +1,5 @@
-// API endpoint - update this with your API server's IP or DNS
-const API_URL = 'http://YOUR_API_SERVER_IP:5000';
+// API endpoint - relative URL (proxied by Apache)
+const API_URL = '/api';
 
 // Check if we're on the login page or pictures page
 if (window.location.pathname.includes('pictures.html')) {
