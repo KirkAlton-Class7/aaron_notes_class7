@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EC2 Instance Metadata</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>EC2 Instance Metadata</h1>
+            <p>Instance information from AWS metadata service</p>
+            
+            <p><strong>Instance ID:</strong><br><code>{{INSTANCE_ID}}</code></p>
+            <p><strong>Instance Type:</strong><br><code>{{INSTANCE_TYPE}}</code></p>
+            <p><strong>Hostname:</strong><br><code>{{HOSTNAME}}</code></p>
+            <p><strong>Private IP Address:</strong><br><code>{{PRIVATE_IP}}</code></p>
+            <p><strong>Public IP Address:</strong><br><code>{{PUBLIC_IP}}</code></p>
+            <p><strong>Availability Zone:</strong><br><code>{{AZ}}</code></p>
+            <p><strong>Region:</strong><br><code>{{REGION}}</code></p>
+            <p><strong>VPC ID:</strong><br><code>{{VPC_ID}}</code></p>
+            <p><strong>Subnet ID:</strong><br><code>{{SUBNET_ID}}</code></p>
+            
+            <a href="/" class="btn">← Back to Application</a>
+        </div>
+    </div>
+</body>
+</html>

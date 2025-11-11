@@ -82,3 +82,4 @@ echo ""
 echo "5. Test the proxy:"
 echo "   curl http://localhost/api/health"
 echo "==============================================="
+
