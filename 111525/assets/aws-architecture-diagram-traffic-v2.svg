@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 910" style="font-family: Arial, sans-serif;">
+  <defs>
+    <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F8F8F8;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="vpcGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E7F6FD;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D5EDF9;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="publicSubnetGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8F5E9;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#C8E6C9;stop-opacity:0.7" />
+    </linearGradient>
+    
+    <linearGradient id="privateSubnetGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E3F2FD;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#BBDEFB;stop-opacity:0.7" />
+    </linearGradient>
+    
+    <!-- Arrow markers for traffic flow legend -->
+    <marker id="arrowOrange" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#FF9900"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#527FFF"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#9C27B0"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#4CAF50"/>
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="700" y="30" text-anchor="middle" font-size="24" font-weight="bold" fill="#232F3E">AWS Web Application Architecture</text>
+  <text x="700" y="55" text-anchor="middle" font-size="14" fill="#666">Auto Scaling Web Tier with Application Load Balancer</text>
+  
+  <!-- End User -->
+  <ellipse cx="700" cy="110" rx="70" ry="28" fill="#527FFF" stroke="#232F3E" stroke-width="2"/>
+  <text x="700" y="108" text-anchor="middle" font-size="13" font-weight="bold" fill="white">End Users</text>
+  <text x="700" y="123" text-anchor="middle" font-size="10" fill="white">Internet</text>
+
+  <!-- AWS Cloud Boundary -->
+  <rect x="20" y="160" width="1360" height="740" rx="10" fill="url(#cloudGrad)" stroke="#FF9900" stroke-width="4"/>
+  <text x="40" y="190" font-size="16" font-weight="bold" fill="#FF9900">AWS Cloud</text>
+  
+  <!-- Internet Gateway -->
+  <circle cx="700" cy="242" r="32" fill="#8C4FFF" stroke="#232F3E" stroke-width="2"/>
+  <g transform="translate(700, 242)">
+    <!-- Horseshoe/gate shape -->
+    <path d="M -12,-15 L -12,15 M -12,-15 L 12,-15 M 12,-15 L 12,15" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+  <text x="700" y="285" text-anchor="middle" font-size="10" font-weight="bold" fill="#232F3E">IGW</text>
+
+  <!-- VPC Boundary -->
+  <rect x="50" y="300" width="1300" height="595" rx="8" fill="url(#vpcGrad)" stroke="#2074D5" stroke-width="3"/>
+  <text x="70" y="330" font-size="18" font-weight="bold" fill="#232F3E">VPC: 10.10.0.0/16 (us-west-2)</text>
+  
+  <!-- AZ Labels -->
+  <text x="210" y="360" font-size="14" font-weight="bold" fill="#666">us-west-2a</text>
+  <text x="580" y="360" font-size="14" font-weight="bold" fill="#666">us-west-2b</text>
+  <text x="950" y="360" font-size="14" font-weight="bold" fill="#666">us-west-2c</text>
+  
+  <!-- AZ Boxes -->
+  <rect x="90" y="370" width="310" height="515" rx="5" fill="none" stroke="#AAA" stroke-width="2" stroke-dasharray="5,5"/>
+  <rect x="460" y="370" width="310" height="515" rx="5" fill="none" stroke="#AAA" stroke-width="2" stroke-dasharray="5,5"/>
+  <rect x="830" y="370" width="310" height="515" rx="5" fill="none" stroke="#AAA" stroke-width="2" stroke-dasharray="5,5"/>
+
+  <!-- Public Subnets -->
+  <rect x="110" y="390" width="270" height="150" rx="4" fill="url(#publicSubnetGrad)" stroke="#66BB6A" stroke-width="2"/>
+  <text x="125" y="415" font-size="11" font-weight="bold" fill="#2E7D32">Public Subnet</text>
+  <text x="125" y="430" font-size="9" fill="#2E7D32">10.10.1.0/24</text>
+  
+  <rect x="480" y="390" width="270" height="150" rx="4" fill="url(#publicSubnetGrad)" stroke="#66BB6A" stroke-width="2"/>
+  <text x="495" y="415" font-size="11" font-weight="bold" fill="#2E7D32">Public Subnet</text>
+  <text x="495" y="430" font-size="9" fill="#2E7D32">10.10.2.0/24</text>
+  
+  <rect x="850" y="390" width="270" height="150" rx="4" fill="url(#publicSubnetGrad)" stroke="#66BB6A" stroke-width="2"/>
+  <text x="865" y="415" font-size="11" font-weight="bold" fill="#2E7D32">Public Subnet</text>
+  <text x="865" y="430" font-size="9" fill="#2E7D32">10.10.3.0/24</text>
+
+  <!-- NAT Gateway -->
+  <circle cx="185" cy="487" r="32" fill="#8C4FFF" stroke="#232F3E" stroke-width="2"/>
+  <g transform="translate(185, 487)">
+    <!-- Three arrows coming in from left -->
+    <line x1="-18" y1="-10" x2="-5" y2="-10" stroke="white" stroke-width="2"/>
+    <line x1="-18" y1="0" x2="-5" y2="0" stroke="white" stroke-width="2"/>
+    <line x1="-18" y1="10" x2="-5" y2="10" stroke="white" stroke-width="2"/>
+    <polygon points="-5,-10 -8,-12 -8,-8" fill="white"/>
+    <polygon points="-5,0 -8,-2 -8,2" fill="white"/>
+    <polygon points="-5,10 -8,8 -8,12" fill="white"/>
+    <!-- Vertical lines (filter) -->
+    <line x1="-2" y1="-12" x2="-2" y2="12" stroke="white" stroke-width="2"/>
+    <line x1="2" y1="-12" x2="2" y2="12" stroke="white" stroke-width="2"/>
+    <!-- One arrow going out to right -->
+    <line x1="5" y1="0" x2="18" y2="0" stroke="white" stroke-width="2"/>
+    <polygon points="18,0 15,-2 15,2" fill="white"/>
+  </g>
+  <text x="185" y="530" text-anchor="middle" font-size="10" font-weight="bold" fill="#232F3E">NGW</text>
+
+  <!-- Application Load Balancer -->
+  <!-- ALB Security Group -->
+  <circle cx="700" cy="580" r="75" fill="none" stroke="#DD344C" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="700" y="495" text-anchor="middle" font-size="10" font-weight="bold" fill="#DD344C">SG: web-lb-sg</text>
+  
+  <!-- ALB Circle -->
+  <circle cx="700" cy="580" r="60" fill="#8C4FFF" stroke="#232F3E" stroke-width="2.5"/>
+  
+  <!-- ALB Icon -->
+  <g transform="translate(700, 565)">
+    <rect x="-15" y="-20" width="30" height="20" rx="1.5" fill="white" stroke="white" stroke-width="0.8"/>
+    <rect x="-13" y="-18" width="26" height="16" rx="1" fill="#8C4FFF"/>
+    <line x1="0" y1="0" x2="-22" y2="22" stroke="white" stroke-width="2.5"/>
+    <line x1="0" y1="0" x2="0" y2="22" stroke="white" stroke-width="2.5"/>
+    <line x1="0" y1="0" x2="22" y2="22" stroke="white" stroke-width="2.5"/>
+    <rect x="-30" y="22" width="14" height="12" rx="1" fill="white"/>
+    <rect x="-7" y="22" width="14" height="12" rx="1" fill="white"/>
+    <rect x="16" y="22" width="14" height="12" rx="1" fill="white"/>
+  </g>
+  
+  <text x="700" y="650" text-anchor="middle" font-size="11" font-weight="bold" fill="white">ALB</text>
+  <text x="700" y="663" text-anchor="middle" font-size="9" fill="white">(internet-facing)</text>
+
+  <!-- Private Subnets -->
+  <rect x="110" y="680" width="270" height="195" rx="4" fill="url(#privateSubnetGrad)" stroke="#42A5F5" stroke-width="2"/>
+  <text x="125" y="705" font-size="11" font-weight="bold" fill="#0D47A1">Private Subnet</text>
+  <text x="125" y="720" font-size="9" fill="#0D47A1">10.10.11.0/24</text>
+  
+  <rect x="480" y="680" width="270" height="195" rx="4" fill="url(#privateSubnetGrad)" stroke="#42A5F5" stroke-width="2"/>
+  <text x="495" y="705" font-size="11" font-weight="bold" fill="#0D47A1">Private Subnet</text>
+  <text x="495" y="720" font-size="9" fill="#0D47A1">10.10.12.0/24</text>
+  
+  <rect x="850" y="680" width="270" height="195" rx="4" fill="url(#privateSubnetGrad)" stroke="#42A5F5" stroke-width="2"/>
+  <text x="865" y="705" font-size="11" font-weight="bold" fill="#0D47A1">Private Subnet</text>
+  <text x="865" y="720" font-size="9" fill="#0D47A1">10.10.13.0/24</text>
+
+  <!-- Auto Scaling Group -->
+  <rect x="195" y="745" width="850" height="120" rx="8" fill="none" stroke="#FF9900" stroke-width="2.5" stroke-dasharray="10,5"/>
+  <text x="620" y="738" text-anchor="middle" font-size="11" font-weight="bold" fill="#FF9900">Auto Scaling Group</text>
+  
+  <!-- Web Server Security Group -->
+  <rect x="210" y="760" width="820" height="95" rx="6" fill="none" stroke="#DD344C" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="620" y="776" text-anchor="middle" font-size="10" font-weight="bold" fill="#DD344C">SG: web-server-sg</text>
+
+  <!-- EC2 Instances -->
+  <!-- AZ-A EC2 -->
+  <rect x="230" y="775" width="60" height="60" rx="4" fill="#EC7211" stroke="#232F3E" stroke-width="2"/>
+  <g transform="translate(260, 805)">
+    <!-- Processor icon -->
+    <rect x="-15" y="-15" width="30" height="30" rx="2" fill="white" stroke="white" stroke-width="1"/>
+    <!-- Chip details -->
+    <rect x="-12" y="-12" width="24" height="24" rx="1" fill="#EC7211"/>
+    <rect x="-8" y="-8" width="16" height="16" rx="1" fill="white"/>
+    <!-- Pin lines -->
+    <line x1="-15" y1="-8" x2="-20" y2="-8" stroke="white" stroke-width="1.5"/>
+    <line x1="-15" y1="0" x2="-20" y2="0" stroke="white" stroke-width="1.5"/>
+    <line x1="-15" y1="8" x2="-20" y2="8" stroke="white" stroke-width="1.5"/>
+    <line x1="15" y1="-8" x2="20" y2="-8" stroke="white" stroke-width="1.5"/>
+    <line x1="15" y1="0" x2="20" y2="0" stroke="white" stroke-width="1.5"/>
+    <line x1="15" y1="8" x2="20" y2="8" stroke="white" stroke-width="1.5"/>
+  </g>
+  <text x="260" y="850" text-anchor="middle" font-size="9" font-weight="bold" fill="#232F3E">EC2</text>
+
+  <!-- AZ-B EC2 -->
+  <rect x="590" y="775" width="60" height="60" rx="4" fill="#EC7211" stroke="#232F3E" stroke-width="2"/>
+  <g transform="translate(620, 805)">
+    <rect x="-15" y="-15" width="30" height="30" rx="2" fill="white" stroke="white" stroke-width="1"/>
+    <rect x="-12" y="-12" width="24" height="24" rx="1" fill="#EC7211"/>
+    <rect x="-8" y="-8" width="16" height="16" rx="1" fill="white"/>
+    <line x1="-15" y1="-8" x2="-20" y2="-8" stroke="white" stroke-width="1.5"/>
+    <line x1="-15" y1="0" x2="-20" y2="0" stroke="white" stroke-width="1.5"/>
+    <line x1="-15" y1="8" x2="-20" y2="8" stroke="white" stroke-width="1.5"/>
+    <line x1="15" y1="-8" x2="20" y2="-8" stroke="white" stroke-width="1.5"/>
+    <line x1="15" y1="0" x2="20" y2="0" stroke="white" stroke-width="1.5"/>
+    <line x1="15" y1="8" x2="20" y2="8" stroke="white" stroke-width="1.5"/>
+  </g>
+  <text x="620" y="850" text-anchor="middle" font-size="9" font-weight="bold" fill="#232F3E">EC2</text>
+
+  <!-- AZ-C EC2 -->
+  <rect x="950" y="775" width="60" height="60" rx="4" fill="#EC7211" stroke="#232F3E" stroke-width="2"/>
+  <g transform="translate(980, 805)">
+    <rect x="-15" y="-15" width="30" height="30" rx="2" fill="white" stroke="white" stroke-width="1"/>
+    <rect x="-12" y="-12" width="24" height="24" rx="1" fill="#EC7211"/>
+    <rect x="-8" y="-8" width="16" height="16" rx="1" fill="white"/>
+    <line x1="-15" y1="-8" x2="-20" y2="-8" stroke="white" stroke-width="1.5"/>
+    <line x1="-15" y1="0" x2="-20" y2="0" stroke="white" stroke-width="1.5"/>
+    <line x1="-15" y1="8" x2="-20" y2="8" stroke="white" stroke-width="1.5"/>
+    <line x1="15" y1="-8" x2="20" y2="-8" stroke="white" stroke-width="1.5"/>
+    <line x1="15" y1="0" x2="20" y2="0" stroke="white" stroke-width="1.5"/>
+    <line x1="15" y1="8" x2="20" y2="8" stroke="white" stroke-width="1.5"/>
+  </g>
+  <text x="980" y="850" text-anchor="middle" font-size="9" font-weight="bold" fill="#232F3E">EC2</text>
+
+  <!-- Traffic Flow Lines -->
+  <!-- Inbound: Users to IGW -->
+  <path d="M 700 138 L 700 210" stroke="#FF9900" stroke-width="3" fill="none" marker-end="url(#arrowOrange)"/>
+  
+  <!-- Inbound: IGW to ALB -->
+  <path d="M 700 285 L 700 505" stroke="#FF9900" stroke-width="3" fill="none" marker-end="url(#arrowOrange)"/>
+  
+  <!-- Load Balancing: ALB to EC2 in AZ-A -->
+  <path d="M 640 600 L 540 600 L 260 600 L 260 775" stroke="#527FFF" stroke-width="3" fill="none" marker-end="url(#arrowBlue)"/>
+  
+  <!-- Load Balancing: ALB to EC2 in AZ-B -->
+  <path d="M 700 640 L 700 670 L 620 670 L 620 775" stroke="#527FFF" stroke-width="3" fill="none" marker-end="url(#arrowBlue)"/>
+  
+  <!-- Load Balancing: ALB to EC2 in AZ-C -->
+  <path d="M 760 600 L 860 600 L 980 600 L 980 775" stroke="#527FFF" stroke-width="3" fill="none" marker-end="url(#arrowBlue)"/>
+  
+  <!-- Outbound: EC2 in AZ-A to NAT -->
+  <path d="M 230 805 L 185 805 L 185 520" stroke="#9C27B0" stroke-width="2.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowPurple)"/>
+  
+  <!-- Outbound: NAT to IGW -->
+  <path d="M 217 487 L 350 487 L 350 320 L 350 242 L 668 242" stroke="#9C27B0" stroke-width="2.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowPurple)"/>
+  
+  <!-- Outbound: IGW to End Users -->
+  <path d="M 700 210 L 700 138" stroke="#9C27B0" stroke-width="2.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowPurple)"/>
+  
+  <!-- Health Checks: ALB to EC2 instances (bidirectional dashed) -->
+  <line x1="650" y1="610" x2="280" y2="760" stroke="#4CAF50" stroke-width="2" stroke-dasharray="3,3"/>
+  <line x1="700" y1="640" x2="620" y2="760" stroke="#4CAF50" stroke-width="2" stroke-dasharray="3,3"/>
+  <line x1="750" y1="610" x2="960" y2="760" stroke="#4CAF50" stroke-width="2" stroke-dasharray="3,3"/>
+
+  <!-- Traffic Flow Key -->
+  <rect x="1180" y="400" width="180" height="230" rx="5" fill="#F9F9F9" stroke="#666" stroke-width="2"/>
+  <text x="1270" y="425" text-anchor="middle" font-size="12" font-weight="bold" fill="#232F3E">Traffic Flow</text>
+  <line x1="1190" y1="432" x2="1350" y2="432" stroke="#999" stroke-width="1"/>
+  
+  <!-- Inbound Traffic -->
+  <line x1="1195" y1="455" x2="1255" y2="455" stroke="#FF9900" stroke-width="3" marker-end="url(#arrowOrange)"/>
+  <text x="1265" y="460" font-size="9" fill="#333">Inbound Traffic</text>
+  <text x="1200" y="473" font-size="8" fill="#666">Users → IGW → ALB</text>
+  
+  <!-- Load Balancing -->
+  <line x1="1195" y1="495" x2="1255" y2="495" stroke="#527FFF" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <text x="1265" y="500" font-size="9" fill="#333">Load Balancing</text>
+  <text x="1200" y="513" font-size="8" fill="#666">ALB → EC2 Instances</text>
+  
+  <!-- Outbound Traffic -->
+  <line x1="1195" y1="535" x2="1255" y2="535" stroke="#9C27B0" stroke-width="3" stroke-dasharray="5,3" marker-end="url(#arrowPurple)"/>
+  <text x="1265" y="540" font-size="9" fill="#333">Outbound Traffic</text>
+  <text x="1200" y="553" font-size="8" fill="#666">EC2 → NAT → IGW</text>
+  
+  <!-- Health Checks -->
+  <line x1="1195" y1="575" x2="1255" y2="575" stroke="#4CAF50" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="1265" y="580" font-size="9" fill="#333">Health Checks</text>
+  <text x="1200" y="593" font-size="8" fill="#666">ALB → EC2 (HTTP:80)</text>
+  <text x="1200" y="604" font-size="7" fill="#999">Used for routing &amp; ASG</text>
+  <text x="1200" y="614" font-size="7" fill="#999">autohealing (ELB type)</text>
+</svg>
