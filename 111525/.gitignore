@@ -65,3 +65,7 @@ venv/
 10b-scaling-policy.tf
 10c-asg-attachment.tf
 
+scripts/__pycache__
+
+__pycache__
+
