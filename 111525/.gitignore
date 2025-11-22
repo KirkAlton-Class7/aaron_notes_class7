@@ -55,15 +55,7 @@ rpm_packages/
 venv/
 
 
-06b-sg-alb.tf
 
-07b-template.tf
-08-target-group.tf
-09a-load-balancer.tf
-09b-lb-listener.tf
-10a-asg.tf
-10b-scaling-policy.tf
-10c-asg-attachment.tf
 
 scripts/__pycache__
 
