@@ -1,0 +1,18 @@
+# System files
+.DS_Store
+
+# Obsidian plugin and workspace state (optional)
+.obsidian/community-plugins.json
+.obsidian/workspace.json
+.obsidian/plugins/*/data.json
+
+# Custom or temporary folders
+.smart-env
+
+# Log or temp files from plugins or exports
+*.log
+.cache/
+temp/
+
+# Plugin dev / node modules (if applicable)
+node_modules/
