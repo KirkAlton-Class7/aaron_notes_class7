@@ -51,9 +51,6 @@ lab:
 10) teardown 
 
 
-
-
-
 tags:
 
 key: value 

@@ -226,7 +226,6 @@ When you run `terraform apply`, Terraform:
 Most dependencies are implicit (Terraform figures them out automatically). The `depends_on` argument is for explicit dependencies that Terraform can't detect.
 
 
-
 ## Learning Resources
 
 Official Terraform documentation:

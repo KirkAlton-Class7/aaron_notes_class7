@@ -138,7 +138,7 @@ AWS global infrastructure is spread throughout the world and coupled together wi
 
 ## Architecture
 
-![Architecture Diagram](./assets/best-ec2.png)
+![Architecture Diagram](best-ec2.png)
 
 ---
 
@@ -163,8 +163,8 @@ Today, the "language" we use is typically called **bash**.
 
 ### Script Options
 
-- [My Simple Script](./scripts/simple_metadata.sh)
-- [My Script with Extensive Comments](./scripts/annotated_metadata.sh)
+- [My Simple Script](simple_metadata.sh)
+- [My Script with Extensive Comments](annotated_metadata.sh)
 - [Theo's Standard Script](https://github.com/MookieWAF/bmc4/blob/main/ec2scrpit)
 - [Script for Making Fun of Theo](https://github.com/aaron-dm-mcdonald/theo-website/blob/main/startup.sh)
 

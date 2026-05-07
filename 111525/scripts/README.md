@@ -43,9 +43,6 @@ locust -f locustfile.py \
   ```
 
 
-
-
-
 ## 4. Optional: Save Output to a Log File
 
 ```bash

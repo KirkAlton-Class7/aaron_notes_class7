@@ -85,7 +85,7 @@ It will create the TheoWAF folder structure if needed and will download a .gitig
 ## Why is this tool needed?
 
 ### Console (ClickOps)
-![](./assets/vpc-creation.PNG)
+![](vpc-creation.PNG)
 
 **Cons of ClickOps:**
 - Difficult to reproduce across environments (dev, staging, prod)
