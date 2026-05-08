@@ -135,7 +135,7 @@ provider "aws" {
     tags = {
       Project     = "vpc-demo"
       Environment = "dev"
-      ManagedBy   = "Terraform"
+      ManagedBy   = "terraform"
     }
   }
 }

@@ -75,7 +75,7 @@ echo ""
 echo "=== Checking TheoWAF Directory ==="
 
 # Define the path
-TARGET_DIR="$HOME/Documents/TheoWAF/class7/AWS/Terraform"
+TARGET_DIR="$HOME/Documents/TheoWAF/class7/aws/Terraform"
 
 # Check if folder exists
 if [ -d "$TARGET_DIR" ]; then

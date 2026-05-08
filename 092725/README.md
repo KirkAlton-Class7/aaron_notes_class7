@@ -152,7 +152,7 @@ killall Finder
 #### **Absolute File Paths:**
 These reference files from the root of the storage drive, including every folder in the path. Like giving complete directions from a landmark (root drive) everyone knows.
 
-**macOS/Linux/Unix Examples:**
+**macOS/linux/Unix Examples:**
 ```bash
 /Users/john/Documents/resume.pdf
 /Applications/Visual Studio Code.app

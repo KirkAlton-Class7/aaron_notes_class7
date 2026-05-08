@@ -11,7 +11,7 @@ Notes for covering Variables and associated concepts of parameterization; locals
 ```bash
 # navigate into your project folder 
 # for example, if you use theowaf folder, do something like this:
-# cd ~/Documents/TheoWAF/class7/AWS/Terraform
+# cd ~/Documents/TheoWAF/class7/aws/Terraform
 # no need to create a folder of today's date
 
 git clone --no-checkout https://github.com/aaron-dm-mcdonald/Class7-notes.git

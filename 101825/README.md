@@ -77,7 +77,7 @@ curl --ssl-no-revoke https://raw.githubusercontent.com/aaron-dm-mcdonald/Class7-
 The script checks the following: 
 - AWS CLI installed, configured and authenticated 
 - Terraform binary is installed and up to date
-- TheoWAF folder present at `~/Documents/TheoWAF/class7/AWS/Terraform`
+- TheoWAF folder present at `~/Documents/TheoWAF/class7/aws/Terraform`
 - Creates a .gitignore file
 
 It will create the TheoWAF folder structure if needed and will download a .gitignore file configured for Terraform projects.
